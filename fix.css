@@ -11,6 +11,16 @@ html, body, #app {
 #app .title {
     font-family: 'Sacramento', cursive !important;
 }
-.level-item {
+.with-fixed-padding {
     padding: 0rem .5rem;
+}
+.control-label {
+    display: none;
+}
+.with-mobile-center {
+    display: flex;
+    justify-content: center;
+}
+.with-mobile-center .level-item {
+    padding: 0 .2rem;
 }
