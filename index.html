@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ThickMarker</title>
+    <style>[v-cloak] {display: none}</style>
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="fix.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-full.min.js"></script>
+    <script type="text/paperscript" src="draw.js" canvas="drawCanvas"></script>
+</head>
+<body>
+    <div id="app" class="has-background-black" v-cloak>
+        <div class="container">
+            <div id="nav" class="level is-marginless">
+                <div class="level-left">
+                    <div class="level-item">
+                        <b-dropdown hoverable>
+                            <span slot="trigger">
+                                <h1 class="title is-2 has-text-warning">ThickMarker</h1>
+                            </span>
+                            <b-dropdown-item @click="save()">
+                                <span>Save</span>
+                            </b-dropdown-item>
+                            <b-dropdown-item @click="clear()">
+                                <span>Clear</span>
+                            </b-dropdown-item>
+                        </b-dropdown>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <b-tooltip label="Simplify Line?"
+                        type="is-warning"
+                        position="is-bottom">
+                        <div class="level-item">
+                            <b-switch type="is-warning" v-model="switchers.simplification">
+                            </b-switch>
+                        </div>
+                    </b-tooltip>
+                    <b-tooltip label="AI Simplify Line?"
+                        type="is-warning"
+                        position="is-bottom">
+                        <div class="level-item">
+                            <b-switch type="is-warning" v-model="switchers.AIsimplification">
+                            </b-switch>
+                        </div>
+                    </b-tooltip>
+                    <b-tooltip label="Round Line?"
+                        type="is-warning"
+                        position="is-bottom">
+                        <div class="level-item">
+                            <b-switch type="is-warning" v-model="switchers.round">
+                            </b-switch>
+                        </div>
+                    </b-tooltip>
+                </div>
+            </div>
+        </div>
+        <canvas hidpi="on" id="drawCanvas" :width="w" :height="h"></canvas>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/switch"></script>
+    <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/dropdown"></script>
+    <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/tooltip"></script>
+    <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/toast"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/snackbar"></script> -->
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
