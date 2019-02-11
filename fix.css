@@ -11,3 +11,6 @@ html, body, #app {
 #app .title {
     font-family: 'Sacramento', cursive !important;
 }
+.level-item {
+    padding: 0rem .5rem;
+}
