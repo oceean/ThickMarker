@@ -32,7 +32,7 @@ function onMouseDown(event) {
     }
     path = new Path({
         segments: [event.point],
-        strokeWidth: 10,
+        strokeWidth: window.switchers.StrokeWidth || 5,
         strokeCap: window.switchers.round ? 'round' : 'miter',
         StrokeJoin: window.switchers.round ? 'round' : 'bevel',
         strokeColor: '#ffdd57',
