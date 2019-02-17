@@ -3,6 +3,9 @@
 html, body, #app {
     overflow: hidden
 }
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 #app {
     display: flex;
     flex-direction: column;
@@ -23,4 +26,21 @@ html, body, #app {
 }
 .with-mobile-center .level-item {
     padding: 0 .2rem;
+}
+.rha .dropdown-content {
+    background-color: transparent;
+    padding: 0;
+}
+.rha a.dropdown-item {
+    background-color: transparent;
+    padding: 0 !important;
+    padding-bottom: 10px !important;
+}
+.rha a.dropdown-item:hover {
+    background-color: transparent;
+}
+.rha {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }

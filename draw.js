@@ -1,4 +1,4 @@
-var paths = [];
+var LastDown;
 var path;
 
 window.fPaperGetSVG = function (fileName) {
@@ -27,29 +27,41 @@ window.fPaperSave = function () {
 window.fPaperLoad()
 
 function onMouseDown(event) {
-    if (path) {
-        path.selected = false;
-    }
     path = new Path({
+        selected: false,
         segments: [event.point],
-        strokeWidth: window.switchers.StrokeWidth || 5,
-        strokeCap: window.switchers.round ? 'round' : 'miter',
-        StrokeJoin: window.switchers.round ? 'round' : 'bevel',
-        strokeColor: '#ffdd57',
+        strokeWidth: window.penStroke || 5,
+        strokeCap: 'round',
+        StrokeJoin: 'round',
+        strokeColor: window.penColor || '#ffdd57',
     });
-    paths.push(path);
+    LastDown = event.point;
 }
 
 function onMouseDrag(event) {
+    if (LastDown) {
+        LastDown = false;
+    }
     path.add(event.point);
 }
 
 function onMouseUp(event) {
-    if (window.switchers.AIsimplification) {
-        path.simplify(40);
-    } else {
-        if (window.switchers.simplification) {
-            path.simplify(10);
+    var circle = false;
+    if (LastDown) {
+        circle = true;
+        new Path.Circle({
+            center: LastDown,
+            radius: (window.penStroke || 5)/2,
+            fillColor: window.penColor || '#ffdd57'
+        });
+    }
+    if (!circle) {
+        if (window.switchers.AIsimplification) {
+            path.simplify(40);
+        } else {
+            if (window.switchers.simplification) {
+                path.simplify(10);
+            }
         }
     }
 }

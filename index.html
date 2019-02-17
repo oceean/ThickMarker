@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ThickMarker</title>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <style>[v-cloak] {display: none}</style>
     <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.0/dist/css/bulma-slider.min.css">
     <link rel="stylesheet" href="fix.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-full.min.js"></script>
     <script type="text/paperscript" src="draw.js" canvas="drawCanvas"></script>
@@ -51,18 +54,29 @@
                             </b-switch>
                         </div>
                     </b-tooltip>
-                    <b-tooltip label="Round Line?"
-                        type="is-warning"
-                        position="is-bottom">
-                        <div class="level-item">
-                            <b-switch type="is-warning" v-model="switchers.round">
-                            </b-switch>
-                        </div>
-                    </b-tooltip>
                 </div>
             </div>
         </div>
         <canvas hidpi="on" id="drawCanvas" :width="w" :height="h"></canvas>
+        <div class="rha">
+                <b-dropdown hoverable position="is-top-left">
+                <span slot="trigger">
+                    <button class="button is-small is-rounded is-warning">&dot;</button>
+                </span>
+                <b-dropdown-item>
+                    <picker v-model="colors"></picker>
+                </b-dropdown-item>
+            </b-dropdown>
+            <b-dropdown hoverable position="is-top-left">
+                <span slot="trigger">
+                    <button class="button is-small is-rounded is-warning">&dot;</button>
+                </span>
+                <b-dropdown-item>
+                    <a href="" class="has-text-white">{{stroke}}</a>
+                    <input class="slider is-fullwidth is-small is-circle" step="1" min="0" max="50" v-model="stroke" type="range">
+                </b-dropdown-item>
+            </b-dropdown>
+        </div>
     </div>
 
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
@@ -70,7 +84,8 @@
     <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/dropdown"></script>
     <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/tooltip"></script>
     <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/toast"></script>
-    <!-- <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/snackbar"></script> -->
+    <script type="text/javascript" src="https://unpkg.com/buefy/dist/components/snackbar"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-color/2.7.0/vue-color.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

@@ -27,12 +27,18 @@ let switchers = JSON.parse(localStorage.getItem("switchers"));
 window.switchers = switchers || {
     simplification: true,
     AIsimplification: true,
-    round: true,
 };
+window.penColor = localStorage.getItem("penColor") || "#ffdd57";
+window.penStroke = localStorage.getItem("penStroke") || 10;
 let app = new Vue({
     el: '#app',
+    components: {
+        'picker': VueColor.Chrome,
+    },
     data: {
         switchers: window.switchers,
+        colors: window.penColor,
+        stroke: window.penStroke,
         w: appEl.offsetWidth,
         h: appEl.offsetHeight - navEl.offsetHeight
     },
@@ -40,6 +46,14 @@ let app = new Vue({
         switchers: function(val) {
             localStorage.setItem("switchers", JSON.stringify(val));
             window.switchers = val;
+        },
+        colors: function (val) {
+            localStorage.setItem("penColor", val.hex8);
+            window.penColor = val.hex8;
+        },
+        stroke: function (val) {
+            localStorage.setItem("penStroke", val);
+            window.penStroke = val;
         }
     },
     methods: {
